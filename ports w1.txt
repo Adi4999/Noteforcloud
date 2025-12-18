@@ -1,0 +1,8 @@
+Port : not a physical but a logical connection that is used 
+by program/service to exchange information.
+
+Each port has its own number assisgned to it, ranging from 0 to 65535.
+common ports:
+80,443 : web servers
+21 : ftp
+25 : smtp
