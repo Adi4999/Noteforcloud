@@ -1,0 +1,34 @@
+Subnetting process : https://www.youtube.com/watch?v=ecCuyq-Wprc
+
+subnetting : Dividing a network into 2 or more sub network for an efficient flow.
+
+subnet mask : a template that is used to divide networks according to the requirement, 
+it may appear like : 255.255.255.0
+
+*First IP is always reserved for network id while last one is reserved for broadcast. 
+
+subnetting process :
+
++--------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| Subnet       |  1  |  2  |  4  |  8  |  16 |  32 |  64 | 128 | 256 | <- number of network division
++--------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| Host         | 256 | 128 |  64 |  32 |  16 |  8  |  4  |  2  |  1  |<- number of host per network
++--------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| Subnet Mask  | /24 | /25 | /26 | /27 | /28 | /29 | /30 | /31 | /32 |<- subnet mask
++--------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+
+For example : If a company requires to divide their network into 3 subnets 
+
+The cloest subnet to 3 would be 4, it can host upto 62 devices (*) 
+
+so the subnest mask for this requiremnt would be /26.
+
+
+
+
+Class,First Octet Range,Default Subnet Mask,CIDR Notation,Purpose
+Class A,1 – 127,255.0.0.0,/8,"Very large networks (Gov, ISPs)"
+Class B,128 – 191,255.255.0.0,/16,Medium to large organizations
+Class C,192 – 223,255.255.255.0,/24,Small local networks (LANs)
+Class D,224 – 239,N/A,N/A,Multicasting (Streaming/Video)
+Class E,240 – 255,N/A,N/A,Experimental/Research
