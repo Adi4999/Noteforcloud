@@ -1,0 +1,60 @@
+EC2 = a virtual computer (server) you rent on AWS
+
+
+Types of Ec2 :
+
+- General purpose t3: Balanced compute, memory, and networking for most everyday workloads.
+
+= Compute-optimized c5: High CPU performance for compute-intensive tasks.
+
+= Memory-optimized r6: Large, fast memory for processing big datasets in RAM.
+
+= Accelerated computing g4: Specialized hardware (GPU/accelerators) for graphics, ML, and complex calculations.
+
+= Storage-optimized i3: High-performance local storage for data-intensive workloads.
+
+
+T → Typical (general use)
+
+C → Compute
+
+R → RAM
+
+G → GPU
+
+I → IO / storage
+
+
+
+Interacting with AWS services
+
+AWS console(web based GUI interface)
+CLI
+AWS SDK
+
+note : Shared responsibilty(EC2)
+The customer is responsible for configuring, 
+securing, and managing the operating system, networking, 
+and applications on their EC2 instances.
+
+While AWS is responsible for Software for storage, compute, database and network including 
+necessary harware.
+
+
+Quick guide to  EC2 instance  initalization : 
+ 
+ choose number of instance you want to create 
+
+ Choose AMI : An AMI is a template that defines what software and OS an EC2 instance launches with.
+
+Choose server type : According to purpose e.g. general purpose t3
+
+Firewall 
+
+Storage 
+ 
+advance settings
+
+launch
+
+
