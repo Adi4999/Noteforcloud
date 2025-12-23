@@ -1,0 +1,20 @@
+Scaling and elasticity : When you need to upgrade your service due to growing demand, 
+either you scale horizontally or vertically.
+
+Scaling : Scalability describes the capability to increase capacity
+elasticity : how quickly and automatically resources change based on demand. 
+
+vertically  by upgrading to a larger EC2 instance
+
+horizontally by adding more instances using services like *Auto Scaling.
+
+*Auto Scaling : Featue by AWS, to increase or decrease instances according to the load on server.
+
+
+
+summary (exam-ready)
+Concept	What it means
+Scalability	: Ability to grow capacity
+Vertical	: One way to scale (bigger instance)
+Horizontal	: One way to scale (more instances)
+Elasticity	: Automatic scaling based on demand
