@@ -8,7 +8,7 @@ vertically  by upgrading to a larger EC2 instance
 
 horizontally by adding more instances using services like *Auto Scaling.
 
-*Auto Scaling : Featue by AWS, to increase or decrease instances according to the load on server.
+*Auto Scaling : Feature by AWS, to increase or decrease instances according to the load on server.
 
 
 

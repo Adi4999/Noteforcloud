@@ -1,0 +1,28 @@
+aws intro :
+-intro to AWS service
+-Regions and availability zones
+-Shared responsibility 
+
+ec2 : 
+
+
+Scalability :
+ -Scalability 
+- elasticity
+- Horizontal and vertical scaling
+- Auto scaling
+- load balancer
+- ELB
+- SNS and SQS 
+
+
+
+
+Serverless
+- Fully managed / managed / unmanaged
+-Lambda
+- Containers and orchestration
+- ECS, EKS and fargate 
+- Comparison ECS and EKS
+- ECR
+- Other Amazon services

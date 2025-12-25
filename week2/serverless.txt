@@ -93,7 +93,10 @@ EC2 Worker Nodes          AWS Fargate (Serverless)
 
 
 
-Amazon Elastic Container Registry
+Elastic Container Registry (ECR) : Fully managed Docker container registry.
+- Store, manage, and deploy container images.
+- Integrated with ECS, EKS, and Lambda.
+- Secure (IAM integration) and highly available.
 
 AWS Elastic Beanstalk : Platform as a Service (PaaS).
 - Automates deployment: You upload code -> AWS handles capacity provisioning, load balancing, scaling, and health monitoring.
