@@ -1,0 +1,14 @@
+Amazon web service : 
+Pay as you go program 
+
+Regions-> 3 or more availability zones -> Data centers
+
+Shared responsibilty ->
+
+Users/ companys responsibilty :
+ Customers/Clients Data protection, OS patches, application/softwate level encryption 
+
+ AWS's responsibilty :
+Physical data center protection 
+hardware and networking configration 
+availability of zones  

@@ -1,0 +1,63 @@
+Server architechture diagram: 
+
+
+                +------------------- AWS Cloud -------------------+
+                |                                                 |
+                |   +---------------- VPC ----------------+       |
+                |   |                                     |       |
+                |   |   +------------ Public Subnet --------+     |
+                |   |   |                                |        |
+User (Internet) ---> |   |   | Internet Gateway (IGW)      |        |
+                |   |   +--------------------------------+        |
+                |   |                                     |       |
+                |   |   +----- Availability Zone A ------+        |
+                |   |   |                                |        |
+                |   |   |  +----- Private Subnet 1 -----+|        |
+                |   |   |  |                            ||        |
+                |   |   |  |  Amazon EC2 Instances      ||        |
+                |   |   |  |   [EC2 Instance 1]         ||        |
+                |   |   |  |   [EC2 Instance 2]         ||        |
+                |   |   |  |                            ||        |
+                |   |   |  +---------------------------+|        |
+                |   |   |  |  Private DB 1             ||        |
+                |   |   |  |   [Database 1]            ||        |
+                |   |   |  |   [Database 2]            ||        |
+                |   |   |  +---------------------------+|        |
+                |   |   +--------------------------------+        |
+                |   |                                     |       |
+                |   |   +----- Availability Zone B ------+        |
+                |   |   |                                |        |
+                |   |   |  +----- Private Subnet 2 -----+|        |
+                |   |   |  |                            ||        |
+                |   |   |  |  Amazon EC2 Instances      ||        |
+                |   |   |  |   [EC2 Instance 1]         ||        |
+                |   |   |  |   [EC2 Instance 2]         ||        |
+                |   |   |  |                            ||        |
+                |   |   |  +---------------------------+|        |
+                |   |   |  |  Private DB 2             ||        |
+                |   |   |  |   [Database 1]            ||        |
+                |   |   |  |   [Database 2]            ||        |
+                |   |   |  +---------------------------+|        |
+                |   |   +--------------------------------+        |
+                |   +-------------------------------------+       |
+                +------------------------------------------------+
+
+
+Amazon VPC is a solid box, and it represents your isolated, logically segmented network within AWS. A VPC helps you to control your network resources and security.
+
+The NAT (Network Address Translation) Gateway or NAT Instance plays a very specific role in a VPC: allowing private subnet resources to access the internet without exposing them directly.
+
+
+Subnets
+
+AWS Direct Connect 
+
+AWS VPN services 
+
+AWS Global Accelerator
+
+Network group and ACLs
+
+AWS Edge-cloud front 
+
+Route 53
