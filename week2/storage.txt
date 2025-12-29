@@ -8,3 +8,165 @@ organised using buckets. best for large/ infrequently changed files.
 
 File storage : Cloud based access via shared files. Strightforward implementation without code changes
 Best for apps needing share file access.
+
+
+EC2 instance store is directly attached to the host, offering extremely low latency and
+ high I/O performance for applications that need temporary storage with fast access.
+
+
+EBS (Elastic Block Store) : Persistent block storage volumes for EC2 instances.
+- Network-attached and replicated within an Availability Zone.
+- Data persists independently of the instance's life.
+
+EBS snapshots : Point-in-time backups of EBS volumes.
+- Stored incrementally in Amazon S3.
+- Used for disaster recovery or creating new volumes.
+
+Amazon Data Lifecycle Manager : Automates the creation, retention, and deletion of 
+EBS snapshots and AMIs based on defined schedules/policies.
+
+
+Amazon S3 (Simple Storage Service) : Scalable object storage service.
+- Stores data as objects in buckets (containers).
+- 11 9s of durability (99.999999999%).
+- Unlimited storage, pay for what you use.
+- Regional service, but bucket names are globally unique.
+- Storage classes available for different access patterns (Standard, Glacier, etc.).
+
+Amazon S3 Security :
+- Encryption:
+  - Server-Side Encryption (SSE): AWS encrypts data at rest (SSE-S3, SSE-KMS, SSE-C).
+  - Client-Side Encryption: You encrypt data before uploading.
+  - In-transit: Data is encrypted via SSL/TLS (HTTPS).
+- Access Control:
+  - IAM Policies: User-based permissions (who can access what).
+  - Bucket Policies: Resource-based permissions (who can access this specific bucket).
+  - Block Public Access: Prevents public access to buckets/objects.
+- Versioning: Keeps multiple variants of an object (protects against overwrites/deletes).
+
+
+S3 Storage Classes :
+- S3 Standard : General purpose, high availability, for frequently accessed data.
+- S3 Intelligent-Tiering : Automatically moves data between access tiers based on usage patterns (cost optimization).
+- S3 Standard-IA (Infrequent Access) : Lower storage cost for data accessed less often, but requires rapid access.
+- S3 One Zone-IA : Stores data in a single Availability Zone (lower cost, lower durability against AZ failure).
+- S3 Glacier Instant Retrieval : Archive storage with milliseconds retrieval.
+- S3 Glacier Flexible Retrieval : Low-cost archive, retrieval times from minutes to hours.
+- S3 Glacier Deep Archive : Lowest cost storage, retrieval times of 12-48 hours.
+
+S3 Lifecycle Policies :
+- Automate moving objects between storage classes or deleting them to save costs.
+- Transition Actions: Move objects to cheaper storage (e.g., Standard -> Glacier) after a set time.
+- Expiration Actions: Automatically delete objects after a specific period (e.g., delete logs after 90 days).
+
+Amazon EFS (Elastic File System) :
+- Fully managed NFS (Network File System) for use with AWS Cloud services and on-premises resources.
+- Can be mounted on multiple EC2 instances across multiple Availability Zones simultaneously.
+- Highly available, durable, and automatically scales storage capacity up or down as you add or remove files.
+- Compatible with Linux-based AMIs (POSIX compliant).
+
+
+
+EBS vs EFS
+
+Feature                | EBS (Elastic Block Store)        | EFS (Elastic File System)
+---------------------- | ------------------------------- | ------------------------------
+Storage type           | Block storage                   | File storage
+Attachment             | Attached to ONE EC2 instance    | Shared across MANY EC2 instances
+Access method          | OS-level block device            | File system (NFS)
+Use case               | OS disk, databases, applications| Shared files, web content
+Availability           | Single AZ                       | Multi-AZ (regional)
+Scalability            | Manual resize                   | Auto-scales automatically
+Performance            | High, consistent IOPS           | Scales with usage
+Persistence            | Data persists after EC2 stops   | Always persistent
+Backup                 | Snapshots                       | Automatic replication
+Typical examples       | MySQL, PostgreSQL, boot volume  | Media files, shared code
+Exam keyword           | "Attach to instance"            | "Shared file system"
+
+
+
+Amazon FSx is a fully managed file storage service that provides specialized file systems
+ for specific workloads that EBS and EFS are not optimized for.
+
+ EBS = block, EFS = shared Linux files,
+FSx = high-performance or Windows/HPC file system
+
+Types of Fxs
+
+
+Feature                | FSx for Windows File Server     | FSx for Lustre
+---------------------- | ------------------------------ | ------------------------------
+Protocol               | SMB                            | Lustre
+Primary use case        | Windows file sharing           | HPC / Big data workloads
+OS compatibility        | Windows                        | Linux
+Performance             | Enterprise-grade               | Extremely high throughput
+Active Directory        | Native integration             | Not required
+Multi-instance access   | Yes                            | Yes
+AZ scope                | Single AZ / Multi-AZ option    | Single AZ
+Integration             | Windows ecosystem              | Amazon S3
+Typical examples        | Windows apps, shared drives    | ML, video processing
+Exam keyword            | "Windows file system"          | "HPC / Lustre"
+
+
+
+
+Amazon Storage Gateway :
+- A hybrid cloud storage service that connects on-premises environments with AWS cloud storage.
+- Deployed as a virtual machine or hardware appliance on-premises.
+- Types of Gateways:
+  - **s3 file Gateway**: Presents S3 buckets as local file shares (NFS/SMB).
+  - **Volume Gateway**: Provides cloud-backed iSCSI block storage volumes (backed by EBS Snapshots).
+  - **Tape Gateway**: Replaces physical tape libraries with a virtual one in AWS (backed by S3 Glacier).
+
+
+
+  Feature                | S3 File Gateway                         | Volume Gateway                          | Tape Gateway
+---------------------- | -------------------------------------- | --------------------------------------- | -------------------------------
+Gateway type           | File-based                              | Block-based                             | Virtual tape-based
+Storage presented as   | File shares (NFS / SMB)                 | iSCSI block volumes                    | Virtual tapes (VTL)
+Primary AWS storage    | Amazon S3                               | Amazon EBS snapshots                   | Amazon S3 + Glacier
+Local storage usage    | Cache only                              | Cache + stored data (stored mode)      | Cache only
+Protocols              | NFS, SMB                                | iSCSI                                  | iSCSI
+Typical use case       | File shares, backups, archives          | Databases, VM disks, legacy apps       | Backup & archival systems
+Offline access         | Limited                                 | Yes (stored / cached modes)            | No
+Scalability            | Virtually unlimited (S3)                | Limited by local storage               | Virtually unlimited
+Application changes    | Minimal / none                          | Some (block-level access)              | None (backup software compatible)
+Best exam keyword      | "Files to S3"                           | "Block storage gateway"                | "Virtual tape library"
+
+AWS Elastic Disaster Recovery is a managed disaster recovery service that 
+lets you quickly recover on-premises or cloud servers into AWS after a failure, 
+with low RPO and low RTO.
+
+How it works (simple)
+
+Install DRS agent on source servers
+(on-prem, EC2, or other clouds)
+
+Data is continuously replicated to AWS
+
+Data is stored in low-cost staging resources
+
+During a disaster, launch recovery instances in AWS
+
+
+
+
+Key features (exam important)
+
+Continuous block-level replication
+
+Low RPO (seconds)
+
+Low RTO (minutes)
+
+Supports:
+
+Physical servers
+
+Virtual machines
+
+On-prem → AWS
+
+Cloud → AWS
+
+Non-disruptive to production
