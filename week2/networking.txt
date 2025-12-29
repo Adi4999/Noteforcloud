@@ -43,9 +43,12 @@ User (Internet) ---> |   |   | Internet Gateway (IGW)      |        |
                 +------------------------------------------------+
 
 
-Amazon VPC is a solid box, and it represents your isolated, logically segmented network within AWS. A VPC helps you to control your network resources and security.
+Amazon VPC is a solid box, and it represents your isolated, logically segmented network within AWS.
+ A VPC helps you to control your network resources and security.
 
-The NAT (Network Address Translation) Gateway or NAT Instance plays a very specific role in a VPC: allowing private subnet resources to access the internet without exposing them directly.
+
+The NAT (Network Address Translation) Gateway or NAT Instance plays a very specific role in a VPC:
+ allowing private subnet resources to access the internet without exposing them directly.
 
 
 Subnets

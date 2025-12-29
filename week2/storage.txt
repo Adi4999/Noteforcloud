@@ -1,0 +1,10 @@
+Types of storage : 
+
+Block : Data divided into blocks, direct access without file system layers,
+best for apps/db that require fast updates 
+
+Object : consists of data,unique id and metadata. Requires full rewrite while updating Object.
+organised using buckets. best for large/ infrequently changed files.
+
+File storage : Cloud based access via shared files. Strightforward implementation without code changes
+Best for apps needing share file access.

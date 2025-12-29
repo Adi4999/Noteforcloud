@@ -26,3 +26,17 @@ Serverless
 - Comparison ECS and EKS
 - ECR
 - Other Amazon services
+
+
+***Edge location*** : Endpoints used for caching content.
+- Typically used by CloudFront (CDN) to serve content with lower latency.
+- There are many more Edge Locations than Regions.
+
+*** Amazon CloudFormation ***  : Infrastructure as Code (IaC) service to model
+ and provision AWS resources 
+
+
+
+Networking : 
+- Server architecture diagram 
+- 

@@ -1,6 +1,6 @@
-Fully managed : AWS handles all infrastructure, patching, and scaling. You focus on code. (e.g., Lambda, S3)
-Managed : AWS handles hardware and OS; you handle configuration and tuning. (e.g., RDS)
-Unmanaged : You manage the OS, patching, and scaling. AWS provides the hardware. (e.g., EC2)
+-Fully managed : AWS handles all infrastructure, patching, and scaling. You focus on code. (e.g., Lambda, S3)
+-Managed : AWS handles hardware and OS; you handle configuration and tuning. (e.g., RDS)
+-Unmanaged : You manage the OS, patching, and scaling. AWS provides the hardware. (e.g., EC2)
 
 AWS Lambda : Serverless compute service. Run code without provisioning servers,
 its an event based service which means only initiates and run when a particular event is triggered.
@@ -29,8 +29,11 @@ Containers : Package code and dependencies together. Ensures consistency across 
 Orchestration : Managing the lifecycle of containers (deploying, scaling, networking).
 
 AWS Container Services :
-1. Amazon ECS (Elastic Container Service) : AWS-native orchestration tool. Simple, integrates deeply with AWS services.
+1. Amazon ECS (Elastic Container Service) : AWS-native orchestration tool. Simple,
+ integrates deeply with AWS services.
+
 2. Amazon EKS (Elastic Kubernetes Service) : Managed Kubernetes service. Open-source standard.
+
 3. AWS Fargate : Serverless compute engine for containers.
    - Works with ECS and EKS.
    - No EC2 management required (pay for vCPU/RAM used).
@@ -99,17 +102,30 @@ Elastic Container Registry (ECR) : Fully managed Docker container registry.
 - Secure (IAM integration) and highly available.
 
 AWS Elastic Beanstalk : Platform as a Service (PaaS).
-- Automates deployment: You upload code -> AWS handles capacity provisioning, load balancing, scaling, and health monitoring.
+- Automates deployment: You upload code -> AWS handles capacity provisioning, 
+load balancing, scaling, and health monitoring.
+
 - Best for: Developers who want to deploy apps quickly without managing infrastructure details.
 - Control: Keeps control over underlying resources (e.g., EC2).
 - Pricing: Free service (pay only for underlying resources like EC2/RDS).
 
 
-AWS Batch
+AWS Batch : Batch computing service.
 
-AWS lightsail
+AWS lightsail :
 
-AWS outpost
+-Use AWS Lightsail for simple, small applications
+
+-Best for beginners, students, and quick projects
+
+-Offers fixed monthly pricing (predictable cost)
+
+-No complex networking (VPC, subnets handled for you)
+
+AWS outpost :
+
+
+
 
 AWS Services – Description
 
