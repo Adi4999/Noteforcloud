@@ -40,3 +40,21 @@ Serverless
 Networking : 
 - Server architecture diagram 
 - 
+
+
+
+Storage :
+ - Types of storage : block, object and file storage
+ -EBS
+ -EBS snapshots
+ -S3
+ -Amazon S3 Security
+ -S3 Storage Classes
+ -S3 Lifecycle Policies 
+ -EFS
+ -EBS vs EFS
+ -FXs
+ Types of Fxs
+ -Amazon Storage Gateway 
+ -  S3 File Gateway vs Volume Gateway vs Tape Gateway
+ -AWS Elastic Disaster Recovery 

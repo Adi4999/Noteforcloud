@@ -91,7 +91,7 @@ Amazon FSx is a fully managed file storage service that provides specialized fil
  EBS = block, EFS = shared Linux files,
 FSx = high-performance or Windows/HPC file system
 
-Types of Fxs
+Types of Fxs :
 
 
 Feature                | FSx for Windows File Server     | FSx for Lustre
@@ -114,7 +114,7 @@ Amazon Storage Gateway :
 - A hybrid cloud storage service that connects on-premises environments with AWS cloud storage.
 - Deployed as a virtual machine or hardware appliance on-premises.
 - Types of Gateways:
-  - **s3 file Gateway**: Presents S3 buckets as local file shares (NFS/SMB).
+  - **S3 file Gateway**: Presents S3 buckets as local file shares (NFS/SMB).
   - **Volume Gateway**: Provides cloud-backed iSCSI block storage volumes (backed by EBS Snapshots).
   - **Tape Gateway**: Replaces physical tape libraries with a virtual one in AWS (backed by S3 Glacier).
 
