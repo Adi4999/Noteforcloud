@@ -95,4 +95,4 @@ Key Features :
 - Policy-Based : Create backup plans (frequency, retention period) and assign resources to them.
 - Cross-Region / Cross-Account : Copy backups to other regions or accounts for disaster recovery.
 - Lifecycle Management : Automatically transition backups to cold storage (cheaper) or expire them.
-- Vault Lock : Prevents deletion of backups (WORM - Write Once Read Many) for compliance.
+- Vault Lock : Prevents deletion of backups (WORM - Write Once Read Many) for compliance.   
