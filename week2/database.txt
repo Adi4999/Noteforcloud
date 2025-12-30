@@ -1,0 +1,98 @@
+RDS (Relational Database Service) :
+- Managed service that makes it easy to set up, operate, and scale a relational database in the cloud.
+- Automates time-consuming administration tasks like hardware provisioning, database setup, patching, and backups.
+
+Supported Database Engines :
+1. Amazon Aurora (AWS proprietary, high performance)
+2. PostgreSQL
+3. MySQL
+4. MariaDB
+5. Oracle
+6. Microsoft SQL Server
+
+Key Features :
+- Multi-AZ Deployments : Synchronous replication to a standby instance in a different Availability Zone.
+  - Primary use case: Disaster Recovery (DR) and High Availability.
+  - Automatic failover if the primary instance goes down.
+- Read Replicas : Asynchronous replication to read-only instances.
+  - Primary use case: Improved performance for read-heavy workloads.
+  - Can be promoted to a standalone database.
+- Automated Backups : Point-in-time recovery (retention 1-35 days).
+
+Amazon Aurora :
+- Fully managed, MySQL and PostgreSQL-compatible relational database built for the cloud.
+- Up to 5x faster than standard MySQL and 3x faster than standard PostgreSQL.
+- Storage auto-scales automatically.
+- Aurora Serverless : Automatically starts up, shuts down, and scales capacity based on application demand.
+
+
+Aurora provides comparable performance to high-end commercial databases but at "one-tenth" 
+the cost, which makes it ideal for organizations looking to 
+reduce database costs without sacrificing performance.
+
+Non-SQL (NoSQL) Databases :
+- Databases optimized for specific data models (key-value, document, graph) rather than tabular relations.
+- Flexible schema, high scalability, and performance.
+
+Amazon DynamoDB :
+- Fast and flexible NoSQL database service for any scale.
+- Key-value and document data models.
+- Serverless : No servers to provision or manage.
+- Performance : Single-digit millisecond latency at any scale.
+- Capacity Modes :
+  - On-Demand : Pay-per-request (best for unpredictable traffic).
+  - Provisioned : Specify RCU (Read Capacity Units) and WCU (Write Capacity Units) (best for predictable traffic).
+- DynamoDB Accelerator (DAX) : Fully managed, in-memory cache for DynamoDB (improves performance from milliseconds to microseconds).
+- Global Tables : Replicates data automatically across your choice of AWS Regions.
+
+AWS Database Migration Service (DMS) :
+- Helps migrate databases to AWS quickly and securely.
+- The source database remains fully operational during the migration, minimizing downtime.
+- Supports homogeneous migrations (e.g., Oracle to Oracle) and heterogeneous migrations (e.g., Oracle to Amazon Aurora).
+- Can be used for continuous data replication with high availability.
+- AWS Schema Conversion Tool (SCT) : Used in conjunction with DMS for heterogeneous migrations to automatically convert the database schema and code objects.
+
+Other AWS NoSQL Services :
+- Amazon ElastiCache : In-memory data store (Redis or Memcached) for caching to improve app performance.
+- Amazon DocumentDB : Fully managed document database (MongoDB compatible).
+Amazon DocumentDB excels at handling semistructured data like product catalogs.
+- Amazon Neptune : Fully managed graph database.
+Neptune provides low-latency and high-throughput performance for both read and write operations, 
+making it suitable for real-time applications working with connected data.
+
+
+Amazon Aurora vs Amazon DynamoDB
+-----------------------------------------------
+
+Feature              | Amazon Aurora                      | Amazon DynamoDB
+---------------------|------------------------------------|-----------------------------
+Database Type        | Relational (SQL)                    | NoSQL (Key-Value / Document)
+AWS Service Type     | Managed RDBMS                       | Fully Managed NoSQL
+Supported Engines    | MySQL, PostgreSQL                   | Proprietary
+Schema               | Fixed schema (tables, rows, cols)  | Schema-less
+Query Language       | SQL                                 | No SQL (API-based queries)
+Joins                | Supported                           | Not supported
+Transactions         | Supported (ACID)                    | Supported (ACID)
+Scalability          | Vertical + Read Replicas            | Automatic horizontal scaling
+Scaling Speed        | Slower (minutes)                    | Near-instant
+Performance          | High (OLTP workloads)               | Single-digit millisecond
+Use Case             | Complex queries, reporting          | High-scale, low-latency apps
+Data Relationships   | Strongly related data               | Independent items
+Availability         | Multi-AZ                            | Multi-region by default
+Backup               | Automated backups                   | Continuous backups
+Pricing Model        | Instance + storage based            | Pay per request / capacity
+Server Management    | Minimal                             | None (serverless)
+Maximum Scale        | Limited by instance size            | Practically unlimited
+Typical Examples     | ERP, CRM, financial systems         | Gaming, IoT, real-time apps
+
+
+AWS Backup :
+- A fully managed service to centralize and automate data protection across AWS services.
+- Helps meet regulatory compliance and business continuity goals.
+
+Key Features :
+- Centralized Management : Manage backups for multiple AWS services (EBS, RDS, DynamoDB, S3, EFS, FSx, etc.) from a single console.
+- Policy-Based : Create backup plans (frequency, retention period) and assign resources to them.
+- Cross-Region / Cross-Account : Copy backups to other regions or accounts for disaster recovery.
+- Lifecycle Management : Automatically transition backups to cold storage (cheaper) or expire them.
+- Vault Lock : Prevents deletion of backups (WORM - Write Once Read Many) for compliance.
