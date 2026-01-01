@@ -1,0 +1,75 @@
+Authentication and authorization : 
+
+Authentication (AuthN) : Verifying identity ("Who are you?")
+Authorization (AuthZ) : Verifying permissions ("What can you do?")
+
+AWS Identity and Access Management (IAM) :
+- Global service (not regional).
+- Manages access to AWS services and resources securely.
+- Free to use.
+
+IAM Components :
+1. IAM User : Represents a person or application. Has long-term credentials.
+2. IAM Group : A collection of users. Permissions assigned to a group apply to all users in it.
+3. IAM Role : An identity with specific permissions that can be assumed by users or AWS services.
+   - Uses temporary security credentials.
+   - Example: An EC2 instance using a role to access S3.
+4. IAM Policy : A JSON document that defines permissions (Allow or Deny actions).
+
+IAM Best Practices (Exam Important) :
+- Lock away the root user access keys (don't use root for daily tasks).
+- Enable Multi-Factor Authentication (MFA) for all users.
+- Principle of Least Privilege : Grant only the permissions needed, nothing more.
+- Use Roles for applications running on EC2 (never store credentials on the instance).
+
+AWS Cognito :
+- Provides authentication, authorization, and user management for web/mobile apps.
+- User Pools : Directory for users (sign-up/sign-in).
+- Identity Pools : Vends temporary AWS credentials to users to access resources.
+
+AWS Shield :
+- Managed Distributed Denial of Service (DDoS) protection service.
+- Shield Standard : Free, automatically enabled for all AWS customers. Protects against common layer 3/4 attacks.
+- Shield Advanced : Paid service. Provides additional protection for higher-level attacks, 24/7 access to DDoS Response Team (DRT), and cost protection against spikes due to DDoS.
+
+AWS WAF (Web Application Firewall) :
+- Protects web applications from common web exploits (SQL injection, Cross-Site Scripting).
+- Works at Layer 7 (Application Layer).
+- You define rules (Access Control Lists - ACLs) to allow or block traffic.
+- Can be attached to CloudFront, Application Load Balancer, API Gateway.
+
+Amazon Inspector :
+- Automated security assessment service.
+- Scans EC2 instances for software vulnerabilities and unintended network exposure.
+- Produces a report with findings prioritized by severity.
+
+Amazon GuardDuty :
+- Intelligent threat detection service.
+- Uses Machine Learning to analyze AWS logs (CloudTrail, VPC Flow Logs, DNS Logs) for malicious activity.
+- Example: Detects if an EC2 instance is communicating with a known malicious IP or mining cryptocurrency.
+
+Amazon Macie :
+- Fully managed data security and privacy service.
+- Uses Machine Learning to discover and protect sensitive data (PII - Personally Identifiable Information) in Amazon S3.
+
+AWS Artifact :
+- Central resource for compliance-related information.
+- Provides on-demand access to AWS security and compliance reports (ISO, PCI, SOC reports).
+- Used to prove to auditors that AWS is compliant.
+
+AWS KMS (Key Management Service) :
+- Managed service to create and control encryption keys.
+- Used to encrypt data at rest across many AWS services (EBS, S3, RDS, etc.).
+- Integrated with CloudTrail to log key usage.
+
+AWS Detective :
+- Simplifies the investigation process for security findings.
+- Automatically collects log data from AWS resources (VPC Flow Logs, CloudTrail, GuardDuty).
+- Uses machine learning, statistical analysis, and graph theory to build visualizations.
+- Helps identify the root cause of potential security issues.
+
+AWS Security Hub :
+- Centralized security dashboard.
+- Aggregates alerts (findings) from various AWS services (GuardDuty, Inspector, Macie, IAM Access Analyzer) and partner tools.
+- Performs automated compliance checks against standards (CIS, PCI DSS).
+- Provides a comprehensive view of your security posture across AWS accounts.
