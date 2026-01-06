@@ -105,6 +105,8 @@ AWS Elastic Beanstalk : Platform as a Service (PaaS).
 - Automates deployment: You upload code -> AWS handles capacity provisioning, 
 load balancing, scaling, and health monitoring.
 
+“I’ll give AWS my code, and AWS will handle servers, scaling, monitoring, and update
+
 - Best for: Developers who want to deploy apps quickly without managing infrastructure details.
 - Control: Keeps control over underlying resources (e.g., EC2).
 - Pricing: Free service (pay only for underlying resources like EC2/RDS).

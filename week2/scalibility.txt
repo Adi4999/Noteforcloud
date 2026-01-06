@@ -8,7 +8,7 @@ vertically  by upgrading to a larger EC2 instance
 
 horizontally by adding more instances using services like *Auto Scaling.
 
-*Auto Scaling : Feature by AWS, to increase or decrease instances according to the load on server.
+*Auto Scaling : Featue by AWS, to increase or decrease instances according to the load on server.
 
 
 
@@ -18,3 +18,43 @@ Scalability	: Ability to grow capacity
 Vertical	: One way to scale (bigger instance)
 Horizontal	: One way to scale (more instances)
 Elasticity	: Automatic scaling based on demand
+
+
+load balancer : It distributes incoming traffic across multiple servers 
+to improve availability, fault tolerance, and performance. AWS has ELB (Elastic load balance)
+
+ELB (load balancer) : It automatically distributes incoming traffic across multiple AWS resources such as
+EC2 instances, containers, and IP addresses.
+
+Simple Queuing servie (SQS) and Simple Notification Service (SNS) :
+ SQS Purpose:
+Decouple components by sending messages to a queue, 
+where messages are processed by one consumer at a time. (makes components loosly coupled)
+
+SNS Purpose:
+Send messages to multiple subscribers at the same time.
+
+
+SQS + SNS Together (Fan-out pattern ⭐)
+
+SNS sends a message to multiple SQS queues,
+each queue processes the message independently.
+
+This is a very common AWS architecture.
+
+One-line exam tip ⭐
+
+SQS = store and process messages
+SNS = broadcast messages
+
+Key Differences: SQS vs SNS
+
++--------------------+-------------------------+---------------------------+
+| Feature            | SQS (Queuing)           | SNS (Messaging)           |
++--------------------+-------------------------+---------------------------+
+| Pattern            | Point-to-point Queue    | Publish / Subscribe       |
+| Message delivery   | Pull-based              | Push-based                |
+| Consumers          | One consumer per message| Multiple subscribers      |
+| Processing         | Asynchronous            | Event-driven              |
+| Message retention  | Yes (configurable)      | No (temporary delivery)   |
++--------------------+-------------------------+---------------------------+

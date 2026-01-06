@@ -47,6 +47,7 @@ Storage :
  - Types of storage : block, object and file storage
  -EBS
  -EBS snapshots
+ -Amazon Data Lifecycle Manager 
  -S3
  -Amazon S3 Security
  -S3 Storage Classes
@@ -58,3 +59,28 @@ Storage :
  -Amazon Storage Gateway 
  -  S3 File Gateway vs Volume Gateway vs Tape Gateway
  -AWS Elastic Disaster Recovery 
+
+
+
+
+ Security :
+
+-Authentication and Authorization
+-AWS Identity and Access Management (IAM)
+-IAM Components
+-IAM Best Practices (Exam Important)
+-AWS Cognito
+-AWS Shield
+-AWS WAF
+-Amazon Inspector
+-Amazon GuardDuty
+-Amazon Macie
+-AWS Artifact
+-AWS KMS (Key Management Service)
+-AWS Detective
+-AWS Security Hub
+
+
+
+
+

@@ -7,7 +7,7 @@ Server architechture diagram:
                 |   |                                     |       |
                 |   |   +------------ Public Subnet --------+     |
                 |   |   |                                |        |
-User (Internet) ---> |   |   | Internet Gateway (IGW)      |        |
+User (Internet) ---> |  |   | Internet Gateway (IGW)      |        |
                 |   |   +--------------------------------+        |
                 |   |                                     |       |
                 |   |   +----- Availability Zone A ------+        |
@@ -51,16 +51,47 @@ The NAT (Network Address Translation) Gateway or NAT Instance plays a very speci
  allowing private subnet resources to access the internet without exposing them directly.
 
 
-Subnets
+Subnets :
+- A range of IP addresses in your VPC.
+- Public Subnet: Has a route to the Internet Gateway (IGW). Resources here can access the internet.
+- Private Subnet: Does not have a direct route to the IGW. Resources here cannot be directly accessed from the internet.
 
-AWS Direct Connect 
+AWS Direct Connect :
+- A dedicated physical network connection from your on-premises data center to AWS.
+- Bypasses the public internet.
+- Benefits: Consistent network performance, lower latency, increased bandwidth, and potential cost savings on data transfer.
 
-AWS VPN services 
+AWS VPN services :
+- AWS Site-to-Site VPN : Securely connects your on-premises network or branch office to your VPC over the public internet using IPsec.
+- AWS Client VPN : Securely connects individual users (remote workers) to AWS or on-premises networks.
 
-AWS Global Accelerator
+AWS Global Accelerator :
+- A networking service that improves the availability and performance of your applications for global users.
+- Uses the AWS global network infrastructure (instead of the public internet).
+- Provides two static IP addresses that act as a fixed entry point to your application.
 
-Network group and ACLs
+Security Groups vs Network ACLs (Firewalls) :
 
-AWS Edge-cloud front 
++---------------------+---------------------------+----------------------------+
+| Feature             | Security Group            | Network ACL (NACL)         |
++---------------------+---------------------------+----------------------------+
+| Level of protection | Instance level (EC2)      | Subnet level               |
+| Stateful/Stateless  | Stateful (Return traffic  | Stateless (Return traffic  |
+|                     | allowed automatically)    | must be explicitly allowed)|
+| Rules               | Allow rules only          | Allow and Deny rules       |
+| Evaluation          | All rules evaluated       | Processed in number order  |
++---------------------+---------------------------+----------------------------+
 
-Route 53
+Amazon CloudFront (CDN) :
+- A Content Delivery Network (CDN) service that delivers data, videos, applications, and APIs to customers globally with low latency and high transfer speeds.
+- Caches content at Edge Locations (servers closer to users).
+- Protects against DDoS attacks (integrated with AWS Shield).
+
+Amazon Route 53 :
+- Highly available and scalable Domain Name System (DNS) web service.
+- Translates human-readable domain names (www.example.com) into IP addresses.
+- Key Features:
+  1. Domain Registration.
+  2. DNS Routing (Simple, Weighted, Latency, Failover, Geolocation).
+  3. Health Checks (monitors app health and routes traffic away from unhealthy endpoints).
+  4. You can buy and manage domain names directly in Route 53.
