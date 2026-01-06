@@ -65,7 +65,7 @@ AWS KMS (Key Management Service) :
 AWS Detective :
 - Simplifies the investigation process for security findings.
 - Automatically collects log data from AWS resources (VPC Flow Logs, CloudTrail, GuardDuty).
-- Uses machine learning, statistical analysis, and graph theory to build visualizations.
+- Uses machine learning, statistical analysis, and graph theory to build "visualizations".
 - Helps identify the root cause of potential security issues.
 
 AWS Security Hub :
@@ -73,3 +73,4 @@ AWS Security Hub :
 - Aggregates alerts (findings) from various AWS services (GuardDuty, Inspector, Macie, IAM Access Analyzer) and partner tools.
 - Performs automated compliance checks against standards (CIS, PCI DSS).
 - Provides a comprehensive view of your security posture across AWS accounts.
+
