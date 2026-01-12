@@ -30,7 +30,8 @@ AWS Cognito :
 AWS Shield :
 - Managed Distributed Denial of Service (DDoS) protection service.
 - Shield Standard : Free, automatically enabled for all AWS customers. Protects against common layer 3/4 attacks.
-- Shield Advanced : Paid service. Provides additional protection for higher-level attacks, 24/7 access to DDoS Response Team (DRT), and cost protection against spikes due to DDoS.
+- Shield Advanced : Paid service. Provides additional protection for higher-level attacks,
+  24/7 access to DDoS Response Team (DRT), and cost protection against spikes due to DDoS.
 
 AWS WAF (Web Application Firewall) :
 - Protects web applications from common web exploits (SQL injection, Cross-Site Scripting).
