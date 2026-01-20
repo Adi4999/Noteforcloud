@@ -1,0 +1,141 @@
+#variables are saved in another file : terraform.tfvars
+ 
+
+ variable "accessKey" {
+  description = "Access key"
+  type        = string
+
+}
+
+variable "secretKey" {
+  description = "Secret key"
+  type        = string
+  sensitive   = true
+}
+
+#name of the provider (intial command terrafrom init)
+provider "aws" {
+
+region  = "us-east-2"
+
+access_key =var.accessKey
+
+secret_key =var.secretKey
+
+}
+
+
+
+#aws_vpc
+resource "aws_vpc" "testvpc"{
+cidr_block = "10.0.0.0/16"
+tags = {
+Name = "terraformvpc"
+}
+
+}
+
+
+
+#aws_internet_gateway
+resource "aws_internet_gateway" "testigw"{
+vpc_id = aws_vpc.testvpc.id
+
+
+tags = {
+Name = "terraformigw"
+}
+}
+
+#aws_subnet
+
+resource "aws_subnet" "testsubnet"{
+ vpc_id = aws_vpc.testvpc.id
+
+cidr_block = "10.0.1.0/24"
+map_public_ip_on_launch = true
+
+tags = {
+Name = "terraformsubnet"
+}
+
+}
+
+#aws_route_table
+resource "aws_route_table" "testroutetable"{
+vpc_id = aws_vpc.testvpc.id
+
+route {
+
+cidr_block = "0.0.0.0/0"
+gateway_id = aws_internet_gateway.testigw.id
+
+}
+
+
+tags= {
+Name = "terraformrt"
+
+}
+}
+
+
+
+#aws_route_table_association
+resource "aws_route_table_association" "testrta" {
+
+subnet_id = aws_subnet.testsubnet.id
+
+route_table_id = aws_route_table.testroutetable.id
+
+
+}
+#aws_security_group
+resource "aws_security_group" "testsg" {
+vpc_id = aws_vpc.testvpc.id
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+
+
+ingress {
+  from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+}
+
+ingress {
+  from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+}
+
+
+}
+
+
+
+
+#aws_instance
+resource "aws_instance" "testaws"{
+
+ami = "ami-0f5fcdfbd140e4ab7"
+
+subnet_id = aws_subnet.testsubnet.id
+
+  instance_type = "t3.micro"
+key_name = "awspubliserver"
+vpc_security_group_ids = [aws_security_group.testsg.id]
+tags = {
+
+Name= "terraformserver"
+}
