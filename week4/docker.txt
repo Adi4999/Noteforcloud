@@ -1,0 +1,52 @@
+Example: node app 
+
+app->dockerfile-> docker build -t image-name . -> image built -> run the image in form of a container
+
+-build your node server project. After you development, make a docker file (named Dockerfile)
+
+
+
+-for eg
+------
+FROM node:20 (base image, ':20' represenets the version of node,optional)
+
+WORKDIR /app (working directory withing node image)
+
+COPY package*.json  ./ (cache reasons)
+
+
+RUN npm install (to install all the dependencies of the project)
+
+
+COPY . .  (copy all other files first dot represenets path of desired files, all files, 
+second dot represenets taget location of working directory in the base image)
+
+
+EXPOSE 3000 (to run project on the port 3000)
+
+CMD ['node','server.js']
+------
+
+- terminal : docker build -t node-app .  (image will be built with the name node-app, and 
+'.' denotes the current directory for the docker file)
+
+
+- to verify the image build, in terminal : docker images
+
+output :
+                                                                                                               i Info →   U  In Use
+IMAGE                         ID             DISK USAGE   CONTENT SIZE   EXTRA
+
+node-app:latest            975889dbd06f       1.63GB          407MB    U
+
+
+
+- running a docker image (into a container)
+docker run -d --rm --name "node-server-app" -it -p 3000:3000 node-app bash (running docker container in detached mode )
+
+
+note :
+run         Create and run a new container from an image
+exec        Execute a command in a running container
+
+
